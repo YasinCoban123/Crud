@@ -1,5 +1,5 @@
 <?php
-
+include 'navbar.php';
  echo "<h1>Delete Bier</h1>";
  require_once('functions.php');
  if(isset($_POST) && isset($_POST['btn_wzg'])){

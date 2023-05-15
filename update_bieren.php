@@ -27,6 +27,7 @@
         Soort: <input type="text" name="soort" value="<?= $row['soort']?>"><br>
         Stijl: <input type="text" name="stijl" value="<?= $row['stijl']?>"><br>
         Alcohol: <input type="text" name="alcohol" value="<?= $row['alcohol']?>"><br>
+        <?php dropDown('brouwcode', GetData('brouwer'));?>
         Brouwcode: <input type="text" name="brouwcode" value="<?= $row['brouwcode']?>"><br><br>
         <input type="submit" name="btn_wzg" value="Wijzigen" onclick="window.location.href='crud_bieren.php'"><br>
         </form>

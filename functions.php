@@ -76,6 +76,33 @@
      
  }
 
+ function dropDown($label, $data) {
+    foreach($data as $row){
+        $text .= "<option value= '$row[brouwcode]'$row[brouwcode]</option>";
+
+/*
+        <option value='volvo'>Volvo</option>
+        <option value='saab'>Saab</option>
+        <option value='mercedes'>Mercedes</option>
+        <option value='audi'>Audi</option>
+*/ 
+
+$text .= "</select>";
+
+echo "$text";
+
+    }
+ }
+
+ function insert_bier($naam, $brouwcode, $soort, $alcohol, $stijl) {
+    $conn = ConnectDb();
+    
+    $query = $conn->prepare("INSERT INTO bier (naam, brouwcode, soort, alcohol, stijl) VALUES (:naam, :brouwcode, :soort, :alcohol, :stijl)");
+    $query->execute([':naam' => $naam, ':brouwcode' => $brouwcode, ':soort' => $soort, ':alcohol' => $alcohol, ':stijl' => $stijl]);
+    
+    return $query->rowCount() === 1; // return true if a single row was affected
+}
+
  function PrintTableTest($result){
     // Zet de hele table in een variable en print hem 1 keer 
     $table = "<table border = 1px>";
@@ -159,6 +186,7 @@ function PrintCrudBier($result){
 
         // Delete via linkje href
         $table .= '<td><a href="delete_bieren.php?biercode='.$row["biercode"].'">verwijder</a></td>';
+        $table .= '<td><a href="insert_bieren.php?biercode='.$row["biercode"].'">Insert</a></td>';
         
         $table .= "</tr>";
     }
