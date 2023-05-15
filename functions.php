@@ -1,5 +1,5 @@
 <?php
-// auteur: Wigmans
+// auteur: yasin
 // functie: algemene functies tbv hergebruik
  function ConnectDb(){
     $servername = "localhost";
@@ -94,11 +94,11 @@ echo "$text";
     }
  }
 
- function insert_bier($naam, $brouwcode, $soort, $alcohol, $stijl) {
+ function insert_bier($biercode, $naam, $soort, $alcohol, $stijl, $brouwcode) {
     $conn = ConnectDb();
     
-    $query = $conn->prepare("INSERT INTO bier (naam, brouwcode, soort, alcohol, stijl) VALUES (:naam, :brouwcode, :soort, :alcohol, :stijl)");
-    $query->execute([':naam' => $naam, ':brouwcode' => $brouwcode, ':soort' => $soort, ':alcohol' => $alcohol, ':stijl' => $stijl]);
+    $query = $conn->prepare("INSERT INTO bier (biercode, naam, soort, stijl, alcohol, brouwcode ) VALUES (:biercode, :naam, :soort, :stijl, :alcohol)");
+    $query->execute([':biercode' => $biercode, ':naam' => $naam, ':soort' => $soort, ':stijl' => $stijl, ':alcohol' => $alcohol, ':brouwcode' => $brouwcode]);
     
     return $query->rowCount() === 1; // return true if a single row was affected
 }

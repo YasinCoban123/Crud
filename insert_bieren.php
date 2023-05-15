@@ -7,7 +7,8 @@ if(isset($_POST) && isset($_POST['btn_toevoegen'])){
     $stijl = $_POST['stijl'];
     $alcohol = $_POST['alcohol'];
     $brouwcode = $_POST['brouwcode'];
-    
+    $biercode = $_POST['biercode'];
+
     insert_bier($naam, $soort, $stijl, $alcohol , $brouwcode);
     header('Location: crud_bieren.php');
 }
@@ -16,6 +17,7 @@ if(isset($_POST) && isset($_POST['btn_toevoegen'])){
 <html>
 <body>
 <form method="post">
+Biercode:<input type="text" name="biercode" required><br>
 Naam:<input type="text" name="naam" required><br>
 Soort:<input type="text" name="soort" required><br>
 Stijl:<input type="text" name="stijl" required><br>
