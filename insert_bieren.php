@@ -9,7 +9,7 @@ if(isset($_POST) && isset($_POST['btn_toevoegen'])){
     $brouwcode = $_POST['brouwcode'];
     $biercode = $_POST['biercode'];
 
-    insert_bier($naam, $soort, $stijl, $alcohol , $brouwcode);
+    insert_bier($biercode, $naam, $soort, $alcohol, $stijl, $brouwcode);
     header('Location: crud_bieren.php');
 }
 ?>

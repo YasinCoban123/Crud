@@ -78,7 +78,8 @@
 
  function dropDown($label, $data) {
     foreach($data as $row){
-        $text .= "<option value= '$row[brouwcode]'$row[brouwcode]</option>";
+        $text = "<option value= '$row[brouwcode]'$row[brouwcode]</option>";
+        echo $text;
 
 /*
         <option value='volvo'>Volvo</option>
@@ -97,8 +98,12 @@ echo "$text";
  function insert_bier($biercode, $naam, $soort, $alcohol, $stijl, $brouwcode) {
     $conn = ConnectDb();
     
-    $query = $conn->prepare("INSERT INTO bier (biercode, naam, soort, stijl, alcohol, brouwcode ) VALUES (:biercode, :naam, :soort, :stijl, :alcohol)");
-    $query->execute([':biercode' => $biercode, ':naam' => $naam, ':soort' => $soort, ':stijl' => $stijl, ':alcohol' => $alcohol, ':brouwcode' => $brouwcode]);
+    $query = $conn->prepare("INSERT INTO bier (biercode, naam, soort, stijl, alcohol, brouwcode ) 
+    VALUES (:biercode, :naam, :soort, :stijl, :alcohol, :brouwcode)");
+    $query->execute([
+        ':biercode'=>$biercode, ':naam' => $naam, 
+        ':soort' => $soort, ':stijl' => $stijl, ':alcohol' => $alcohol, ':brouwcode' => $brouwcode
+    ]);
     
     return $query->rowCount() === 1; // return true if a single row was affected
 }
@@ -148,6 +153,8 @@ function PrintTable($result){
 
 function CrudBieren(){
 
+   echo '<a href="insert_bieren.php">Insert bieren</a>';
+   
     // Haal alle bier record uit de tabel 
     $result = GetData("bier");
     
