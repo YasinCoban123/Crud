@@ -22,7 +22,18 @@ Naam:<input type="text" name="naam" required><br>
 Soort:<input type="text" name="soort" required><br>
 Stijl:<input type="text" name="stijl" required><br>
 Alcohol:<input type="text" name="alcohol" required><br>
-Brouwcode:<input type="text" name="brouwcode" required><br>
+Brouwcode:
+<select name="brouwcode" required>
+    <option value="">Select a number</option>
+    <?php
+    $start = 678;
+    $end = 1354;
+    for ($i = $start; $i <= $end; $i++) {
+        echo "<option value='$i'>$i</option>";
+    }
+    ?>
+</select>
+<br>
 
 <input type="submit" name="btn_toevoegen" value="Voeg toe"><br>
 
